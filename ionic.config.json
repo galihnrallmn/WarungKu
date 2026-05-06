@@ -1,0 +1,7 @@
+{
+  "name": "WarungKu",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
