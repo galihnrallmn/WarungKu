@@ -1,0 +1,312 @@
+.dashboard-content {
+  --background: #f0f4f8;
+}
+
+/* ---- Header ---- */
+.dashboard-toolbar {
+  --background: #ffffff;
+  --border-width: 0;
+  padding: 0;
+}
+
+.dashboard-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+
+.dashboard-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-icon ion-icon {
+  font-size: 20px;
+  color: white;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.2;
+}
+
+.brand-role {
+  font-size: 12px;
+  color: #f97316;
+  font-weight: 500;
+}
+
+.logout-btn {
+  --color: #6b7280;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  font-size: 22px;
+}
+
+/* ---- Greeting ---- */
+.dashboard-greeting {
+  padding: 20px 16px 8px;
+}
+
+.greeting-date {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0 0 4px;
+  text-transform: capitalize;
+}
+
+.greeting-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+/* ---- Stats Grid ---- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.stat-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.stat-icon-wrap ion-icon {
+  font-size: 20px;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.stat-sub {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* ---- Section Title ---- */
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+  padding: 8px 16px 8px;
+  letter-spacing: 0.3px;
+}
+
+/* ---- Nav Grid ---- */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 0 16px 16px;
+}
+
+.nav-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.15s, box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-card:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.nav-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon-wrap ion-icon {
+  font-size: 22px;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+}
+
+/* ---- Terlaris ---- */
+.terlaris-list {
+  margin: 0 16px 8px;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.terlaris-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  gap: 12px;
+}
+
+.terlaris-item:last-child {
+  border-bottom: none;
+}
+
+.terlaris-rank {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff7ed;
+  color: #f97316;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.terlaris-item:first-child .terlaris-rank {
+  background: #f97316;
+  color: white;
+}
+
+.terlaris-name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+.terlaris-qty {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* ---- Empty State ---- */
+.empty-terlaris {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+  gap: 10px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.empty-terlaris ion-icon {
+  font-size: 40px;
+  opacity: 0.4;
+}
+
+.empty-terlaris p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---- Dark Mode ---- */
+@media (prefers-color-scheme: dark) {
+  .dashboard-content {
+    --background: #0f172a;
+  }
+  .dashboard-toolbar {
+    --background: #1e293b;
+  }
+  .brand-name {
+    color: #f1f5f9;
+  }
+  .greeting-text {
+    color: #f1f5f9;
+  }
+  .greeting-date {
+    color: #64748b;
+  }
+  .stat-card,
+  .nav-card,
+  .terlaris-list {
+    background: #1e293b;
+    box-shadow: none;
+  }
+  .stat-label {
+    color: #64748b;
+  }
+  .stat-value {
+    color: #f1f5f9;
+  }
+  .stat-sub {
+    color: #475569;
+  }
+  .section-title {
+    color: #94a3b8;
+  }
+  .nav-label {
+    color: #cbd5e1;
+  }
+  .terlaris-name {
+    color: #f1f5f9;
+  }
+  .terlaris-qty {
+    color: #64748b;
+  }
+  .terlaris-item {
+    border-bottom-color: #1e293b;
+  }
+  .terlaris-rank {
+    background: #1e293b;
+  }
+  .empty-terlaris {
+    color: #475569;
+  }
+}
