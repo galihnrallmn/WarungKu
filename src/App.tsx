@@ -26,8 +26,8 @@ import LoginPage from "./pages/auth/LoginPage";
 import DashboardPage from "./pages/owner/DashboardPage";
 import KategoriPage from "./pages/owner/KategoriPage";
 import MenuPage from "./pages/owner/MenuPage";
-// import TransaksiPage from './pages/owner/TransaksiPage';
-// import LaporanPage from './pages/owner/LaporanPage';
+import TransaksiPage from "./pages/owner/TransaksiPage";
+import LaporanPage from "./pages/owner/LaporanPage";
 // import ProfilTokoPage from './pages/owner/ProfilTokoPage';
 // import UserPage from './pages/owner/UserPage';
 
@@ -153,13 +153,13 @@ const AppRoutes: React.FC = () => {
           exact
           path="/owner/transaksi"
           role="owner"
-          component={() => <ComingSoon title="Riwayat Transaksi" />}
+          component={TransaksiPage}
         />
         <PrivateRoute
           exact
           path="/owner/laporan"
           role="owner"
-          component={() => <ComingSoon title="Laporan" />}
+          component={LaporanPage}
         />
         <PrivateRoute
           exact
