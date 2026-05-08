@@ -28,8 +28,8 @@ import KategoriPage from "./pages/owner/KategoriPage";
 import MenuPage from "./pages/owner/MenuPage";
 import TransaksiPage from "./pages/owner/TransaksiPage";
 import LaporanPage from "./pages/owner/LaporanPage";
-// import ProfilTokoPage from './pages/owner/ProfilTokoPage';
-// import UserPage from './pages/owner/UserPage';
+import ProfilTokoPage from "./pages/owner/ProfilTokoPage";
+import UserPage from "./pages/owner/UserPage";
 
 /* Pages - Kasir (lazy import siap untuk nanti) */
 // import PesananPage from './pages/kasir/PesananPage';
@@ -165,13 +165,13 @@ const AppRoutes: React.FC = () => {
           exact
           path="/owner/profil-toko"
           role="owner"
-          component={() => <ComingSoon title="Profil Toko" />}
+          component={ProfilTokoPage}
         />
         <PrivateRoute
           exact
           path="/owner/users"
           role="owner"
-          component={() => <ComingSoon title="Kelola Kasir" />}
+          component={UserPage}
         />
 
         {/* Kasir Routes */}
