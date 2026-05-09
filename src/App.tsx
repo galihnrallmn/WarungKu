@@ -1,3 +1,7 @@
+// ================================
+// WARUNGKU - App.tsx (Updated dengan Navbar)
+// ================================
+
 import React from "react";
 import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
@@ -19,10 +23,10 @@ import "./theme/variables.css";
 /* Context */
 import { AuthProvider, useAuth } from "./context/AuthContext";
 
-/* Pages - Auth */
+/* Auth */
 import LoginPage from "./pages/auth/LoginPage";
 
-/* Pages - Owner (lazy import siap untuk nanti) */
+/* Owner Pages */
 import DashboardPage from "./pages/owner/DashboardPage";
 import KategoriPage from "./pages/owner/KategoriPage";
 import MenuPage from "./pages/owner/MenuPage";
@@ -30,72 +34,18 @@ import TransaksiPage from "./pages/owner/TransaksiPage";
 import LaporanPage from "./pages/owner/LaporanPage";
 import ProfilTokoPage from "./pages/owner/ProfilTokoPage";
 import UserPage from "./pages/owner/UserPage";
+import KelolaPage from "./pages/owner/KelolaPage";
 
-/* Pages - Kasir (lazy import siap untuk nanti) */
-// import PesananPage from './pages/kasir/PesananPage';
-// import PembayaranPage from './pages/kasir/PembayaranPage';
+/* Kasir Pages - akan dibuat berikutnya */
+// import PesananPage from "./pages/kasir/PesananPage";
+// import RiwayatKasirPage from "./pages/kasir/RiwayatKasirPage";
+// import ProfilKasirPage from "./pages/kasir/ProfilKasirPage";
 
 setupIonicReact();
 
 // --------------------------------
-// AUTH GUARD
-// Redirect ke login jika belum login
-// Redirect ke halaman sesuai role jika sudah login
+// PLACEHOLDER
 // --------------------------------
-
-const PrivateRoute: React.FC<{
-  component: React.ComponentType<any>;
-  path: string;
-  role?: "owner" | "kasir";
-  exact?: boolean;
-}> = ({ component: Component, role, ...rest }) => {
-  const { user } = useAuth();
-
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        // Belum login → ke halaman login
-        if (!user) return <Redirect to="/login" />;
-
-        // Akses halaman owner tapi role kasir → redirect ke halaman kasir
-        if (role === "owner" && user.role !== "owner") {
-          return <Redirect to="/kasir/pesanan" />;
-        }
-
-        // Akses halaman kasir tapi role owner → redirect ke dashboard owner
-        if (role === "kasir" && user.role !== "kasir") {
-          return <Redirect to="/owner/dashboard" />;
-        }
-
-        return <Component {...props} />;
-      }}
-    />
-  );
-};
-
-// --------------------------------
-// ROOT REDIRECT
-// Arahkan ke halaman sesuai role saat buka app
-// --------------------------------
-
-const RootRedirect: React.FC = () => {
-  const { user, isLoading } = useAuth();
-
-  if (isLoading) return null;
-
-  if (!user) return <Redirect to="/login" />;
-
-  if (user.role === "owner") return <Redirect to="/owner/dashboard" />;
-
-  return <Redirect to="/kasir/pesanan" />;
-};
-
-// --------------------------------
-// PLACEHOLDER PAGE
-// Sementara sebelum halaman dibuat
-// --------------------------------
-
 const ComingSoon: React.FC<{ title: string }> = ({ title }) => (
   <div
     style={{
@@ -117,9 +67,44 @@ const ComingSoon: React.FC<{ title: string }> = ({ title }) => (
 );
 
 // --------------------------------
-// APP ROUTES
+// PRIVATE ROUTE
 // --------------------------------
+const PrivateRoute: React.FC<{
+  component: React.ComponentType<any>;
+  path: string;
+  role?: "owner" | "kasir";
+  exact?: boolean;
+}> = ({ component: Component, role, ...rest }) => {
+  const { user } = useAuth();
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        if (!user) return <Redirect to="/login" />;
+        if (role === "owner" && user.role !== "owner")
+          return <Redirect to="/kasir/pesanan" />;
+        if (role === "kasir" && user.role !== "kasir")
+          return <Redirect to="/owner/dashboard" />;
+        return <Component {...props} />;
+      }}
+    />
+  );
+};
 
+// --------------------------------
+// ROOT REDIRECT
+// --------------------------------
+const RootRedirect: React.FC = () => {
+  const { user, isLoading } = useAuth();
+  if (isLoading) return null;
+  if (!user) return <Redirect to="/login" />;
+  if (user.role === "owner") return <Redirect to="/owner/dashboard" />;
+  return <Redirect to="/kasir/pesanan" />;
+};
+
+// --------------------------------
+// ROUTES
+// --------------------------------
 const AppRoutes: React.FC = () => {
   return (
     <IonRouterOutlet>
@@ -130,13 +115,33 @@ const AppRoutes: React.FC = () => {
         {/* Auth */}
         <Route exact path="/login" component={LoginPage} />
 
-        {/* Owner Routes */}
+        {/* Owner - Navbar Routes */}
         <PrivateRoute
           exact
           path="/owner/dashboard"
           role="owner"
           component={DashboardPage}
         />
+        <PrivateRoute
+          exact
+          path="/owner/transaksi"
+          role="owner"
+          component={TransaksiPage}
+        />
+        <PrivateRoute
+          exact
+          path="/owner/kelola"
+          role="owner"
+          component={KelolaPage}
+        />
+        <PrivateRoute
+          exact
+          path="/owner/profil-toko"
+          role="owner"
+          component={ProfilTokoPage}
+        />
+
+        {/* Owner - Sub Routes (dari Kelola) */}
         <PrivateRoute
           exact
           path="/owner/kategori"
@@ -151,21 +156,9 @@ const AppRoutes: React.FC = () => {
         />
         <PrivateRoute
           exact
-          path="/owner/transaksi"
-          role="owner"
-          component={TransaksiPage}
-        />
-        <PrivateRoute
-          exact
           path="/owner/laporan"
           role="owner"
           component={LaporanPage}
-        />
-        <PrivateRoute
-          exact
-          path="/owner/profil-toko"
-          role="owner"
-          component={ProfilTokoPage}
         />
         <PrivateRoute
           exact
@@ -179,13 +172,19 @@ const AppRoutes: React.FC = () => {
           exact
           path="/kasir/pesanan"
           role="kasir"
-          component={() => <ComingSoon title="Input Pesanan" />}
+          component={() => <ComingSoon title="Pesanan" />}
         />
         <PrivateRoute
           exact
-          path="/kasir/pembayaran"
+          path="/kasir/riwayat"
           role="kasir"
-          component={() => <ComingSoon title="Pembayaran" />}
+          component={() => <ComingSoon title="Riwayat" />}
+        />
+        <PrivateRoute
+          exact
+          path="/kasir/profil"
+          role="kasir"
+          component={() => <ComingSoon title="Profil Kasir" />}
         />
 
         {/* Fallback */}
@@ -198,7 +197,6 @@ const AppRoutes: React.FC = () => {
 // --------------------------------
 // APP ROOT
 // --------------------------------
-
 const App: React.FC = () => {
   return (
     <IonApp>

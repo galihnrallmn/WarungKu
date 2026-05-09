@@ -30,6 +30,7 @@ import {
   generateId,
 } from "../../services/storage.service";
 import "./ProfilTokoPage.css";
+import OwnerNavbar from "../../components/OwnerNavbar";
 
 const ProfilTokoPage: React.FC = () => {
   const [profil, setProfil] = useState<ProfilToko | null>(null);
@@ -256,6 +257,7 @@ const ProfilTokoPage: React.FC = () => {
           onDidDismiss={() => setToast({ ...toast, show: false })}
         />
       </IonContent>
+      <OwnerNavbar />
     </IonPage>
   );
 };

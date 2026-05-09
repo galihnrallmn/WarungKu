@@ -1,12 +1,16 @@
+/* ================================
+   WARUNGKU - Dashboard Page Styles
+   ================================ */
+
 .dashboard-content {
   --background: #f0f4f8;
 }
 
-/* ---- Header ---- */
 .dashboard-toolbar {
   --background: #ffffff;
   --border-width: 0;
   padding: 0;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
 }
 
 .dashboard-topbar {
@@ -52,8 +56,6 @@
 
 .logout-btn {
   --color: #6b7280;
-  --padding-start: 8px;
-  --padding-end: 8px;
   font-size: 22px;
 }
 
@@ -81,7 +83,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 12px 16px 0;
 }
 
 .stat-card {
@@ -99,10 +101,17 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
-.stat-icon-wrap ion-icon {
-  font-size: 20px;
+.stat-icon-wrap.orange {
+  background: rgba(249, 115, 22, 0.12);
+  color: #f97316;
+}
+
+.stat-icon-wrap.purple {
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
 }
 
 .stat-label {
@@ -113,7 +122,7 @@
 }
 
 .stat-value {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #1a1a2e;
   line-height: 1.2;
@@ -130,60 +139,54 @@
   font-size: 14px;
   font-weight: 700;
   color: #374151;
-  padding: 8px 16px 8px;
-  letter-spacing: 0.3px;
+  padding: 16px 16px 8px;
 }
 
-/* ---- Nav Grid ---- */
-.nav-grid {
+/* ---- Summary Row ---- */
+.summary-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 0 16px 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 16px;
 }
 
-.nav-card {
+.summary-card {
   background: #ffffff;
   border-radius: 14px;
-  padding: 16px 8px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  cursor: pointer;
+  gap: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.15s, box-shadow 0.15s;
-  -webkit-tap-highlight-color: transparent;
 }
 
-.nav-card:active {
-  transform: scale(0.95);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+.summary-icon {
+  font-size: 26px;
 }
 
-.nav-icon-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.summary-icon.orange {
+  color: #f97316;
+}
+.summary-icon.green {
+  color: #10b981;
 }
 
-.nav-icon-wrap ion-icon {
-  font-size: 22px;
-}
-
-.nav-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: #374151;
+.summary-val {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
   text-align: center;
+}
+
+.summary-lbl {
+  font-size: 11px;
+  color: #9ca3af;
 }
 
 /* ---- Terlaris ---- */
 .terlaris-list {
-  margin: 0 16px 8px;
+  margin: 0 16px;
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
@@ -193,7 +196,7 @@
 .terlaris-item {
   display: flex;
   align-items: center;
-  padding: 12px 16px;
+  padding: 13px 16px;
   border-bottom: 1px solid #f3f4f6;
   gap: 12px;
 }
@@ -216,7 +219,7 @@
   flex-shrink: 0;
 }
 
-.terlaris-item:first-child .terlaris-rank {
+.terlaris-rank.first {
   background: #f97316;
   color: white;
 }
@@ -231,28 +234,26 @@
 .terlaris-qty {
   font-size: 12px;
   color: #6b7280;
-  font-weight: 500;
 }
 
-/* ---- Empty State ---- */
+/* ---- Empty ---- */
 .empty-terlaris {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 16px;
-  gap: 10px;
+  padding: 24px 16px;
+  gap: 8px;
   color: #9ca3af;
   text-align: center;
 }
 
 .empty-terlaris ion-icon {
-  font-size: 40px;
+  font-size: 36px;
   opacity: 0.4;
 }
 
 .empty-terlaris p {
   font-size: 13px;
-  line-height: 1.6;
   margin: 0;
 }
 
@@ -273,9 +274,7 @@
   .greeting-date {
     color: #64748b;
   }
-  .stat-card,
-  .nav-card,
-  .terlaris-list {
+  .stat-card {
     background: #1e293b;
     box-shadow: none;
   }
@@ -291,22 +290,24 @@
   .section-title {
     color: #94a3b8;
   }
-  .nav-label {
-    color: #cbd5e1;
+  .summary-card {
+    background: #1e293b;
+    box-shadow: none;
+  }
+  .summary-val {
+    color: #f1f5f9;
+  }
+  .terlaris-list {
+    background: #1e293b;
+    box-shadow: none;
   }
   .terlaris-name {
     color: #f1f5f9;
   }
-  .terlaris-qty {
-    color: #64748b;
-  }
   .terlaris-item {
-    border-bottom-color: #1e293b;
+    border-bottom-color: #334155;
   }
   .terlaris-rank {
-    background: #1e293b;
-  }
-  .empty-terlaris {
-    color: #475569;
+    background: #1c1008;
   }
 }

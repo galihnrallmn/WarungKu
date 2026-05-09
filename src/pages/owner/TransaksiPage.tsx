@@ -30,6 +30,7 @@ import { getAllWithDetail } from "../../services/transaksi.service";
 import { format, parseISO } from "date-fns";
 import { id as localeId } from "date-fns/locale";
 import "./TransaksiPage.css";
+import OwnerNavbar from "../../components/OwnerNavbar";
 
 const formatRupiah = (amount: number) =>
   new Intl.NumberFormat("id-ID", {
@@ -288,7 +289,7 @@ const TransaksiPage: React.FC = () => {
           </div>
         )}
 
-        <div style={{ height: 24 }} />
+        <div style={{ height: 80 }} />
       </IonContent>
 
       {/* ---- MODAL DETAIL ---- */}
@@ -371,6 +372,7 @@ const TransaksiPage: React.FC = () => {
           )}
         </IonContent>
       </IonModal>
+      <OwnerNavbar />
     </IonPage>
   );
 };

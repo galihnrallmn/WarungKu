@@ -1,0 +1,90 @@
+.kasir-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-top: 1px solid #f3f4f6;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.navbar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 8px 0;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s;
+}
+
+.navbar-item:active {
+  transform: scale(0.92);
+}
+
+.navbar-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #9ca3af;
+  transition: all 0.2s;
+}
+
+.navbar-icon-wrap.active {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.navbar-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: #9ca3af;
+  transition: color 0.2s;
+}
+
+.navbar-item.active .navbar-label {
+  color: #f97316;
+  font-weight: 700;
+}
+
+/* ---- Dark Mode ---- */
+@media (prefers-color-scheme: dark) {
+  .kasir-navbar {
+    background: #1e293b;
+    border-top-color: #334155;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .navbar-icon-wrap {
+    color: #475569;
+  }
+
+  .navbar-icon-wrap.active {
+    background: #1c1008;
+    color: #f97316;
+  }
+
+  .navbar-label {
+    color: #475569;
+  }
+
+  .navbar-item.active .navbar-label {
+    color: #f97316;
+  }
+}
