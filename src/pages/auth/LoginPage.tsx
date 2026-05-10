@@ -111,10 +111,10 @@ const LoginPage: React.FC = () => {
             </IonButton>
 
             {/* Info default akun */}
-            <div className="login-hint">
+            {/* <div className="login-hint">
               <p>Akun default Owner:</p>
               <code>owner@warungku.com / owner123</code>
-            </div>
+            </div> */}
           </div>
 
           <p className="login-footer">

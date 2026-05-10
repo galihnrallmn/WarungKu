@@ -1,7 +1,3 @@
-// ================================
-// WARUNGKU - App.tsx (Updated dengan Navbar)
-// ================================
-
 import React from "react";
 import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
@@ -36,10 +32,10 @@ import ProfilTokoPage from "./pages/owner/ProfilTokoPage";
 import UserPage from "./pages/owner/UserPage";
 import KelolaPage from "./pages/owner/KelolaPage";
 
-/* Kasir Pages - akan dibuat berikutnya */
-// import PesananPage from "./pages/kasir/PesananPage";
-// import RiwayatKasirPage from "./pages/kasir/RiwayatKasirPage";
-// import ProfilKasirPage from "./pages/kasir/ProfilKasirPage";
+/* Kasir Pages */
+import PesananPage from "./pages/kasir/PesananPage";
+import RiwayatKasirPage from "./pages/kasir/RiwayatKasirPage";
+import ProfilKasirPage from "./pages/kasir/ProfilKasirPage";
 
 setupIonicReact();
 
@@ -172,19 +168,19 @@ const AppRoutes: React.FC = () => {
           exact
           path="/kasir/pesanan"
           role="kasir"
-          component={() => <ComingSoon title="Pesanan" />}
+          component={PesananPage}
         />
         <PrivateRoute
           exact
           path="/kasir/riwayat"
           role="kasir"
-          component={() => <ComingSoon title="Riwayat" />}
+          component={RiwayatKasirPage}
         />
         <PrivateRoute
           exact
           path="/kasir/profil"
           role="kasir"
-          component={() => <ComingSoon title="Profil Kasir" />}
+          component={ProfilKasirPage}
         />
 
         {/* Fallback */}

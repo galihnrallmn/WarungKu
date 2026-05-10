@@ -1,0 +1,907 @@
+.riwayat-content {
+  --background: #f0f4f8;
+}
+.riwayat-toolbar {
+  --background: #ffffff;
+  --border-width: 0;
+  --color: #1a1a2e;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ---- Summary ---- */
+.riwayat-summary {
+  margin: 16px 16px 0;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.rs-item {
+  flex: 1;
+}
+.rs-label {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.rs-val {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+.rs-val.primary {
+  color: #f97316;
+}
+.rs-divider {
+  width: 1px;
+  height: 36px;
+  background: #f3f4f6;
+  margin: 0 16px;
+}
+
+/* ---- Empty State ---- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 32px;
+  text-align: center;
+  gap: 10px;
+}
+.empty-state ion-icon {
+  font-size: 56px;
+  color: #d1d5db;
+}
+.empty-state h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #374151;
+  margin: 0;
+}
+.empty-state p {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ---- List ---- */
+.riwayat-list {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.riwayat-item {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.riwayat-item:active {
+  transform: scale(0.98);
+}
+
+.riwayat-metode-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.riwayat-metode-icon.cash {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+.riwayat-metode-icon.qris {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.riwayat-info {
+  flex: 1;
+  min-width: 0;
+}
+.riwayat-kode {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 3px;
+}
+.riwayat-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 2px;
+}
+.riwayat-meta ion-icon {
+  font-size: 12px;
+}
+.riwayat-items-count {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.riwayat-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.riwayat-total {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f97316;
+}
+.riwayat-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.riwayat-badge.cash {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+.riwayat-badge.qris {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+/* ---- Detail Modal ---- */
+.detail-modal-content {
+  --background: #ffffff;
+}
+
+.modal-handle {
+  width: 36px;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+.detail-body {
+  padding: 16px 20px 32px;
+}
+
+.detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.detail-kode {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+.detail-tanggal {
+  font-size: 12px;
+  color: #9ca3af;
+  text-transform: capitalize;
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.detail-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 10px;
+}
+.detail-items {
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.detail-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid #f9fafb;
+}
+.detail-item-row:last-child {
+  border-bottom: none;
+}
+.detail-item-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a2e;
+  flex: 1;
+}
+.detail-item-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.detail-item-qty {
+  font-size: 13px;
+  color: #9ca3af;
+}
+.detail-item-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.detail-total-wrap {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.detail-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #374151;
+}
+.detail-total-val {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f97316;
+}
+.detail-kembalian {
+  font-weight: 600;
+  color: #16a34a;
+}
+
+/* ---- Tombol Lihat Struk ---- */
+.lihat-struk-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  border: 2px solid #f97316;
+  background: transparent;
+  color: #f97316;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.lihat-struk-btn:active {
+  background: #fff7ed;
+}
+.lihat-struk-btn ion-icon {
+  font-size: 20px;
+}
+
+/* ---- Struk Modal ---- */
+.struk-modal-content {
+  --background: #f0f4f8;
+}
+
+.struk-modal-body {
+  padding: 16px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.struk-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.struk-modal-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+/* ---- Pratinjau Struk ---- */
+.struk-preview-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---- Struk Paper ---- */
+.struk-paper {
+  background: #ffffff;
+  width: 100%;
+  max-width: 320px;
+  padding: 24px 20px 8px;
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.struk-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.struk-toko-nama {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.struk-toko-info {
+  font-size: 11px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.struk-divider {
+  margin: 10px 0;
+  border: none;
+}
+.struk-divider.dashed {
+  border-top: 1.5px dashed #d1d5db;
+}
+
+.struk-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+  gap: 8px;
+}
+.struk-info-label {
+  font-size: 11px;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+.struk-info-val {
+  font-size: 11px;
+  color: #374151;
+  font-weight: 600;
+  text-align: right;
+  word-break: break-all;
+}
+
+.struk-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.struk-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.struk-item-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+.struk-item-calc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.struk-item-qty {
+  font-size: 11px;
+  color: #9ca3af;
+}
+.struk-item-subtotal {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.struk-total-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px 0;
+}
+.struk-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #374151;
+}
+.struk-total-val {
+  font-size: 16px;
+  font-weight: 800;
+  color: #f97316;
+}
+.struk-metode-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: #eff6ff;
+  color: #3b82f6;
+}
+.struk-kembalian {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.struk-footer {
+  text-align: center;
+  padding: 8px 0 12px;
+}
+.struk-footer p {
+  font-size: 11px;
+  color: #9ca3af;
+  margin: 2px 0;
+  line-height: 1.5;
+}
+
+/* Zigzag bawah struk */
+.struk-zigzag {
+  position: relative;
+  height: 12px;
+  margin: 0 -20px;
+  background: radial-gradient(circle at 50% 0%, #f0f4f8 6px, transparent 6px);
+  background-size: 16px 12px;
+  background-repeat: repeat-x;
+}
+
+/* ---- Tombol Download ---- */
+.download-struk-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+  transition: opacity 0.15s;
+}
+.download-struk-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.download-struk-btn ion-icon {
+  font-size: 20px;
+}
+
+/* ======================================
+   CUSTOM TOAST
+   ====================================== */
+.ctoast-wrapper {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+  width: calc(100% - 32px);
+  max-width: 400px;
+  pointer-events: none;
+}
+.ctoast-wrapper.show {
+  animation: ctoast-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  pointer-events: all;
+}
+.ctoast-wrapper.hide {
+  animation: ctoast-out 0.35s ease-in forwards;
+  pointer-events: none;
+}
+@keyframes ctoast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+@keyframes ctoast-out {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-8px) scale(0.96);
+  }
+}
+.ctoast {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px 18px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+}
+.ctoast--success {
+  background: #ffffff;
+  border: 1px solid #d1fae5;
+}
+.ctoast--warning {
+  background: #ffffff;
+  border: 1px solid #fef3c7;
+}
+.ctoast--danger {
+  background: #ffffff;
+  border: 1px solid #fee2e2;
+}
+.ctoast-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.ctoast-icon-wrap--success {
+  background: #d1fae5;
+  color: #059669;
+}
+.ctoast-icon-wrap--warning {
+  background: #fef3c7;
+  color: #d97706;
+}
+.ctoast-icon-wrap--danger {
+  background: #fee2e2;
+  color: #ef4444;
+}
+.ctoast-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.ctoast-label {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.ctoast--success .ctoast-label {
+  color: #059669;
+}
+.ctoast--warning .ctoast-label {
+  color: #d97706;
+}
+.ctoast--danger .ctoast-label {
+  color: #ef4444;
+}
+.ctoast-message {
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ctoast-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: none;
+  background: #f3f4f6;
+  color: #9ca3af;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+.ctoast-close:active {
+  background: #e5e7eb;
+}
+.ctoast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  border-radius: 0 0 0 16px;
+  width: 100%;
+  transform-origin: left;
+  animation: ctoast-shrink linear forwards;
+}
+.ctoast-progress--success {
+  background: #059669;
+}
+.ctoast-progress--warning {
+  background: #d97706;
+}
+.ctoast-progress--danger {
+  background: #ef4444;
+}
+@keyframes ctoast-shrink {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* ---- Dark Mode ---- */
+@media (prefers-color-scheme: dark) {
+  .riwayat-content {
+    --background: #0f172a;
+  }
+  .riwayat-toolbar {
+    --background: #1e293b;
+    --color: #f1f5f9;
+  }
+  .riwayat-summary {
+    background: #1e293b;
+    box-shadow: none;
+  }
+  .rs-val {
+    color: #f1f5f9;
+  }
+  .rs-divider {
+    background: #334155;
+  }
+  .riwayat-item {
+    background: #1e293b;
+    box-shadow: none;
+  }
+  .riwayat-kode {
+    color: #f1f5f9;
+  }
+  .riwayat-metode-icon.cash {
+    background: #052e16;
+    color: #4ade80;
+  }
+  .riwayat-metode-icon.qris {
+    background: #1e3a5f;
+    color: #60a5fa;
+  }
+  .riwayat-badge.cash {
+    background: #052e16;
+    color: #4ade80;
+  }
+  .riwayat-badge.qris {
+    background: #1e3a5f;
+    color: #60a5fa;
+  }
+  .empty-state h3 {
+    color: #cbd5e1;
+  }
+
+  .detail-modal-content {
+    --background: #1e293b;
+  }
+  .modal-handle {
+    background: #334155;
+  }
+  .detail-kode {
+    color: #f1f5f9;
+  }
+  .detail-item-name {
+    color: #f1f5f9;
+  }
+  .detail-items {
+    border-color: #334155;
+  }
+  .detail-item-row {
+    border-bottom-color: #1e293b;
+  }
+  .detail-item-price {
+    color: #cbd5e1;
+  }
+  .detail-total-wrap {
+    background: #0f172a;
+  }
+  .detail-total-row {
+    color: #cbd5e1;
+  }
+  .modal-close {
+    background: #334155;
+    color: #94a3b8;
+  }
+  .struk-modal-header h3 {
+    color: #f1f5f9;
+  }
+
+  /* Struk tetap putih di dark mode agar hasil PNG bagus */
+  .struk-modal-content {
+    --background: #0f172a;
+  }
+  /* ---- Struk Paper — Hitam Putih ---- */
+  .struk-paper {
+    background: #ffffff;
+    width: 100%;
+    max-width: 320px;
+    padding: 24px 20px 8px;
+    font-family: "Courier New", Courier, monospace;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .struk-toko-nama {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .struk-toko-info {
+    font-size: 11px;
+    color: #555555;
+    line-height: 1.5;
+  }
+
+  .struk-info-label {
+    font-size: 11px;
+    color: #555555;
+    flex-shrink: 0;
+  }
+
+  .struk-info-val {
+    font-size: 11px;
+    color: #000000;
+    font-weight: 600;
+    text-align: right;
+    word-break: break-all;
+  }
+
+  .struk-item-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #000000;
+  }
+
+  .struk-item-qty {
+    font-size: 11px;
+    color: #555555;
+  }
+
+  .struk-item-subtotal {
+    font-size: 12px;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .struk-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #000000;
+  }
+
+  .struk-total-val {
+    font-size: 16px;
+    font-weight: 800;
+    color: #000000; /* hapus orange */
+  }
+
+  .struk-metode-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: #e5e7eb;
+    color: #000000; /* hapus biru */
+  }
+
+  .struk-kembalian {
+    font-weight: 700;
+    color: #000000; /* hapus hijau */
+  }
+
+  .struk-footer p {
+    font-size: 11px;
+    color: #555555;
+    margin: 2px 0;
+    line-height: 1.5;
+  }
+
+  .struk-divider.dashed {
+    border-top: 1.5px dashed #aaaaaa;
+  }
+
+  /* Toast Dark */
+  .ctoast--success {
+    background: #0f2318;
+    border-color: #065f46;
+  }
+  .ctoast--warning {
+    background: #1c1300;
+    border-color: #78350f;
+  }
+  .ctoast--danger {
+    background: #1c0808;
+    border-color: #7f1d1d;
+  }
+  .ctoast-icon-wrap--success {
+    background: #064e2d;
+    color: #34d399;
+  }
+  .ctoast-icon-wrap--warning {
+    background: #2d1f00;
+    color: #fbbf24;
+  }
+  .ctoast-icon-wrap--danger {
+    background: #3b1219;
+    color: #f87171;
+  }
+  .ctoast--success .ctoast-label {
+    color: #34d399;
+  }
+  .ctoast--warning .ctoast-label {
+    color: #fbbf24;
+  }
+  .ctoast--danger .ctoast-label {
+    color: #f87171;
+  }
+  .ctoast-message {
+    color: #cbd5e1;
+  }
+  .ctoast-close {
+    background: #1e293b;
+    color: #64748b;
+  }
+  .ctoast-close:active {
+    background: #334155;
+  }
+  .ctoast-progress--success {
+    background: #34d399;
+  }
+  .ctoast-progress--warning {
+    background: #fbbf24;
+  }
+  .ctoast-progress--danger {
+    background: #f87171;
+  }
+}
