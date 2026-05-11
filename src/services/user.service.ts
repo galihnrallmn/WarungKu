@@ -75,7 +75,6 @@ export function resetPassword(
   setData<User>(STORAGE_KEYS.USERS, list);
   return { success: true };
 }
-
 export function remove(id: string): boolean {
   const list = getAll();
   setData<User>(
