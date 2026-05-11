@@ -36,6 +36,8 @@ import { format, parseISO } from "date-fns";
 import { id as localeId } from "date-fns/locale";
 import KasirNavbar from "../../components/KasirNavbar";
 import "./RiwayatKasirPage.css";
+import { Filesystem, Directory } from "@capacitor/filesystem";
+import { Capacitor } from "@capacitor/core";
 
 const formatRupiah = (amount: number) =>
   new Intl.NumberFormat("id-ID", {
@@ -294,22 +296,42 @@ const RiwayatKasirPage: React.FC = () => {
         useCORS: true,
         logging: false,
       });
-      const url = canvas.toDataURL("image/png");
 
-      // Download
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `struk-${selected.kode_transaksi}.png`;
-      a.click();
+      const base64Data = canvas.toDataURL("image/png").split(",")[1];
+      const fileName = `struk-${selected.kode_transaksi}.png`;
 
-      // Simpan struk_url ke transaksi jika belum ada
-      if (!selected.struk_url) {
-        updateStrukUrl(selected.id, url);
+      if (Capacitor.isNativePlatform()) {
+        // Simpan ke folder Download di Android
+        await Filesystem.writeFile({
+          path: fileName,
+          data: base64Data,
+          directory: Directory.Documents,
+          recursive: true,
+        });
+
+        // Simpan struk_url
+        if (!selected.struk_url) {
+          updateStrukUrl(selected.id, fileName);
+        }
+
+        showToast(`Struk disimpan di folder Documents.`);
+      } else {
+        // Fallback untuk browser biasa
+        const url = canvas.toDataURL("image/png");
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = fileName;
+        a.click();
+
+        if (!selected.struk_url) {
+          updateStrukUrl(selected.id, url);
+        }
+
+        showToast("Struk berhasil diunduh.");
       }
-
-      showToast("Struk berhasil diunduh.");
     } catch (err) {
-      showToast("Gagal mengunduh struk.", "danger");
+      console.error(err);
+      showToast("Gagal menyimpan struk.", "danger");
     } finally {
       setIsDownloading(false);
     }
