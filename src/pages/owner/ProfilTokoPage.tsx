@@ -9,19 +9,22 @@ import {
   IonToast,
   IonRefresher,
   IonRefresherContent,
-  IonBackButton,
   IonButtons,
+  IonAlert,
   IonSpinner,
   RefresherEventDetail,
 } from "@ionic/react";
 import {
   storefrontOutline,
-  chevronBackOutline,
   locationOutline,
   callOutline,
   checkmarkOutline,
   createOutline,
+  logOutOutline,
+  shieldOutline,
 } from "ionicons/icons";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import { ProfilToko, STORAGE_KEYS } from "../../types";
 import {
   getSingle,
@@ -29,13 +32,18 @@ import {
   nowISO,
   generateId,
 } from "../../services/storage.service";
-import "./ProfilTokoPage.css";
 import OwnerNavbar from "../../components/OwnerNavbar";
+import "./ProfilTokoPage.css";
+import CustomToast from "../../components/CustomToast";
 
 const ProfilTokoPage: React.FC = () => {
+  const { doLogout } = useAuth();
+  const history = useHistory();
+
   const [profil, setProfil] = useState<ProfilToko | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [showLogoutAlert, setShowLogoutAlert] = useState(false);
 
   const [formNama, setFormNama] = useState("");
   const [formAlamat, setFormAlamat] = useState("");
@@ -67,8 +75,6 @@ const ProfilTokoPage: React.FC = () => {
     loadData();
     event.detail.complete();
   };
-
-  const handleEdit = () => setIsEditing(true);
 
   const handleCancel = () => {
     if (profil) {
@@ -112,21 +118,19 @@ const ProfilTokoPage: React.FC = () => {
     }, 300);
   };
 
+  const handleLogout = () => {
+    doLogout();
+    history.replace("/login");
+  };
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar className="profil-toolbar">
-          <IonButtons slot="start">
-            <IonBackButton
-              defaultHref="/owner/dashboard"
-              icon={chevronBackOutline}
-              text=""
-            />
-          </IonButtons>
-          <IonTitle>Profil Toko</IonTitle>
+          <IonTitle>Setting</IonTitle>
           {!isEditing && (
             <IonButtons slot="end">
-              <button className="edit-btn" onClick={handleEdit}>
+              <button className="edit-btn" onClick={() => setIsEditing(true)}>
                 <IonIcon icon={createOutline} />
                 Edit
               </button>
@@ -140,7 +144,7 @@ const ProfilTokoPage: React.FC = () => {
           <IonRefresherContent />
         </IonRefresher>
 
-        {/* Logo / Icon Toko */}
+        {/* Hero */}
         <div className="profil-hero">
           <div className="profil-avatar">
             <IonIcon icon={storefrontOutline} />
@@ -151,9 +155,8 @@ const ProfilTokoPage: React.FC = () => {
           <div className="profil-hero-sub">Profil Toko</div>
         </div>
 
-        {/* Form / View */}
+        {/* Form Card */}
         <div className="profil-card">
-          {/* Nama Toko */}
           <div className="profil-field">
             <div className="profil-field-icon orange">
               <IonIcon icon={storefrontOutline} />
@@ -177,7 +180,6 @@ const ProfilTokoPage: React.FC = () => {
 
           <div className="profil-divider" />
 
-          {/* Alamat */}
           <div className="profil-field">
             <div className="profil-field-icon blue">
               <IonIcon icon={locationOutline} />
@@ -200,7 +202,6 @@ const ProfilTokoPage: React.FC = () => {
 
           <div className="profil-divider" />
 
-          {/* Nomor HP */}
           <div className="profil-field">
             <div className="profil-field-icon green">
               <IonIcon icon={callOutline} />
@@ -246,18 +247,59 @@ const ProfilTokoPage: React.FC = () => {
           </div>
         )}
 
-        <div style={{ height: 32 }} />
+        {/* Preferensi */}
+        {!isEditing && (
+          <>
+            <div className="setting-section-title">Preferensi</div>
+            <div className="setting-card">
+              <div className="profil-divider" />
 
-        <IonToast
-          isOpen={toast.show}
+              {/* Versi */}
+              <div className="setting-item">
+                <div className="setting-icon gray">
+                  <IonIcon icon={shieldOutline} />
+                </div>
+                <div className="setting-label">Versi Aplikasi</div>
+                <div className="setting-val">v1.0.0</div>
+              </div>
+            </div>
+
+            {/* Logout */}
+            <div className="logout-wrap">
+              <button
+                className="logout-btn"
+                onClick={() => setShowLogoutAlert(true)}
+              >
+                <IonIcon icon={logOutOutline} />
+                Keluar dari Akun
+              </button>
+            </div>
+          </>
+        )}
+
+        <div style={{ height: 80 }} />
+
+        <CustomToast
+          show={toast.show}
           message={toast.message}
-          duration={2000}
           color={toast.color as any}
-          position="top"
+          duration={2500}
           onDidDismiss={() => setToast({ ...toast, show: false })}
         />
       </IonContent>
+
       <OwnerNavbar />
+
+      <IonAlert
+        isOpen={showLogoutAlert}
+        header="Keluar"
+        message="Yakin ingin keluar dari aplikasi?"
+        buttons={[
+          { text: "Batal", role: "cancel" },
+          { text: "Keluar", role: "destructive", handler: handleLogout },
+        ]}
+        onDidDismiss={() => setShowLogoutAlert(false)}
+      />
     </IonPage>
   );
 };

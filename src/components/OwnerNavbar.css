@@ -49,14 +49,12 @@
 .navbar-icon-wrap.active {
   background: #fff7ed;
   color: #f97316;
-  font-size: 22px;
 }
 
 .navbar-label {
   font-size: 10px;
   font-weight: 500;
   color: #9ca3af;
-  transition: color 0.2s;
 }
 
 .navbar-item.active .navbar-label {
@@ -64,27 +62,22 @@
   font-weight: 700;
 }
 
-/* ---- Dark Mode ---- */
 @media (prefers-color-scheme: dark) {
   .owner-navbar {
     background: #1e293b;
     border-top-color: #334155;
     box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
   }
-
   .navbar-icon-wrap {
     color: #475569;
   }
-
   .navbar-icon-wrap.active {
     background: #1c1008;
     color: #f97316;
   }
-
   .navbar-label {
     color: #475569;
   }
-
   .navbar-item.active .navbar-label {
     color: #f97316;
   }

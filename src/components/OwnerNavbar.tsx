@@ -13,14 +13,7 @@ import {
 } from "ionicons/icons";
 import "./OwnerNavbar.css";
 
-interface NavItem {
-  label: string;
-  path: string;
-  icon: string;
-  iconActive: string;
-}
-
-const navItems: NavItem[] = [
+const navItems = [
   {
     label: "Home",
     path: "/owner/dashboard",
@@ -53,13 +46,13 @@ const OwnerNavbar: React.FC = () => {
 
   const isActive = (path: string) => {
     if (path === "/owner/kelola") {
-      return (
-        location.pathname === "/owner/kelola" ||
-        location.pathname === "/owner/kategori" ||
-        location.pathname === "/owner/menu" ||
-        location.pathname === "/owner/users" ||
-        location.pathname === "/owner/laporan"
-      );
+      return [
+        "/owner/kelola",
+        "/owner/kategori",
+        "/owner/menu",
+        "/owner/users",
+        "/owner/laporan",
+      ].includes(location.pathname);
     }
     return location.pathname === path;
   };

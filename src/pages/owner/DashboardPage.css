@@ -1,7 +1,3 @@
-/* ================================
-   WARUNGKU - Dashboard Page Styles
-   ================================ */
-
 .dashboard-content {
   --background: #f0f4f8;
 }
@@ -16,7 +12,6 @@
 .dashboard-topbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 12px 16px;
 }
 
@@ -40,37 +35,27 @@
   font-size: 20px;
   color: white;
 }
-
 .brand-name {
   font-size: 16px;
   font-weight: 700;
   color: #1a1a2e;
   line-height: 1.2;
 }
-
 .brand-role {
   font-size: 12px;
   color: #f97316;
   font-weight: 500;
 }
 
-.logout-btn {
-  --color: #6b7280;
-  font-size: 22px;
-}
-
-/* ---- Greeting ---- */
 .dashboard-greeting {
   padding: 20px 16px 8px;
 }
-
 .greeting-date {
   font-size: 12px;
   color: #6b7280;
   margin: 0 0 4px;
   text-transform: capitalize;
 }
-
 .greeting-text {
   font-size: 20px;
   font-weight: 700;
@@ -78,7 +63,6 @@
   margin: 0;
 }
 
-/* ---- Stats Grid ---- */
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -108,19 +92,16 @@
   background: rgba(249, 115, 22, 0.12);
   color: #f97316;
 }
-
 .stat-icon-wrap.purple {
   background: rgba(99, 102, 241, 0.12);
   color: #6366f1;
 }
-
 .stat-label {
   font-size: 11px;
   color: #6b7280;
   font-weight: 500;
   margin-bottom: 4px;
 }
-
 .stat-value {
   font-size: 15px;
   font-weight: 700;
@@ -128,13 +109,11 @@
   line-height: 1.2;
   margin-bottom: 4px;
 }
-
 .stat-sub {
   font-size: 11px;
   color: #9ca3af;
 }
 
-/* ---- Section Title ---- */
 .section-title {
   font-size: 14px;
   font-weight: 700;
@@ -142,7 +121,6 @@
   padding: 16px 16px 8px;
 }
 
-/* ---- Summary Row ---- */
 .summary-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -164,27 +142,23 @@
 .summary-icon {
   font-size: 26px;
 }
-
 .summary-icon.orange {
   color: #f97316;
 }
 .summary-icon.green {
   color: #10b981;
 }
-
 .summary-val {
   font-size: 16px;
   font-weight: 700;
   color: #1a1a2e;
   text-align: center;
 }
-
 .summary-lbl {
   font-size: 11px;
   color: #9ca3af;
 }
 
-/* ---- Terlaris ---- */
 .terlaris-list {
   margin: 0 16px;
   background: #ffffff;
@@ -200,7 +174,6 @@
   border-bottom: 1px solid #f3f4f6;
   gap: 12px;
 }
-
 .terlaris-item:last-child {
   border-bottom: none;
 }
@@ -223,20 +196,17 @@
   background: #f97316;
   color: white;
 }
-
 .terlaris-name {
   flex: 1;
   font-size: 14px;
   font-weight: 500;
   color: #1a1a2e;
 }
-
 .terlaris-qty {
   font-size: 12px;
   color: #6b7280;
 }
 
-/* ---- Empty ---- */
 .empty-terlaris {
   display: flex;
   flex-direction: column;
@@ -246,18 +216,15 @@
   color: #9ca3af;
   text-align: center;
 }
-
 .empty-terlaris ion-icon {
   font-size: 36px;
   opacity: 0.4;
 }
-
 .empty-terlaris p {
   font-size: 13px;
   margin: 0;
 }
 
-/* ---- Dark Mode ---- */
 @media (prefers-color-scheme: dark) {
   .dashboard-content {
     --background: #0f172a;
@@ -274,28 +241,24 @@
   .greeting-date {
     color: #64748b;
   }
-  .stat-card {
+  .stat-card,
+  .summary-card {
     background: #1e293b;
     box-shadow: none;
   }
   .stat-label {
     color: #64748b;
   }
-  .stat-value {
+  .stat-value,
+  .summary-val {
     color: #f1f5f9;
   }
-  .stat-sub {
+  .stat-sub,
+  .summary-lbl {
     color: #475569;
   }
   .section-title {
     color: #94a3b8;
-  }
-  .summary-card {
-    background: #1e293b;
-    box-shadow: none;
-  }
-  .summary-val {
-    color: #f1f5f9;
   }
   .terlaris-list {
     background: #1e293b;

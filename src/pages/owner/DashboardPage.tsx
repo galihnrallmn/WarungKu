@@ -1,7 +1,3 @@
-// ================================
-// WARUNGKU - Dashboard Owner
-// ================================
-
 import React, { useState, useEffect } from "react";
 import {
   IonPage,
@@ -9,8 +5,6 @@ import {
   IonHeader,
   IonToolbar,
   IonIcon,
-  IonButton,
-  IonAlert,
   IonRefresher,
   IonRefresherContent,
   RefresherEventDetail,
@@ -21,9 +15,7 @@ import {
   receiptOutline,
   trendingUpOutline,
   fastFoodOutline,
-  logOutOutline,
 } from "ionicons/icons";
-import { useHistory } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { getDashboardData } from "../../services/transaksi.service";
 import { getSingle } from "../../services/storage.service";
@@ -41,8 +33,7 @@ const formatRupiah = (amount: number): string =>
   }).format(amount);
 
 const DashboardPage: React.FC = () => {
-  const { user, doLogout } = useAuth();
-  const history = useHistory();
+  const { user } = useAuth();
 
   const [data, setData] = useState<DashboardData>({
     omzet_hari_ini: 0,
@@ -52,7 +43,6 @@ const DashboardPage: React.FC = () => {
     menu_terlaris: [],
   });
   const [profil, setProfil] = useState<ProfilToko | null>(null);
-  const [showLogoutAlert, setShowLogoutAlert] = useState(false);
 
   const loadData = () => {
     setData(getDashboardData());
@@ -66,11 +56,6 @@ const DashboardPage: React.FC = () => {
   const handleRefresh = (event: CustomEvent<RefresherEventDetail>) => {
     loadData();
     event.detail.complete();
-  };
-
-  const handleLogout = () => {
-    doLogout();
-    history.replace("/login");
   };
 
   const today = format(new Date(), "EEEE, dd MMMM yyyy", { locale: localeId });
@@ -91,13 +76,6 @@ const DashboardPage: React.FC = () => {
                 <div className="brand-role">Owner</div>
               </div>
             </div>
-            <IonButton
-              fill="clear"
-              className="logout-btn"
-              onClick={() => setShowLogoutAlert(true)}
-            >
-              <IonIcon icon={logOutOutline} slot="icon-only" />
-            </IonButton>
           </div>
         </IonToolbar>
       </IonHeader>
@@ -125,7 +103,6 @@ const DashboardPage: React.FC = () => {
             </div>
             <div className="stat-sub">{data.transaksi_hari_ini} transaksi</div>
           </div>
-
           <div className="stat-card">
             <div className="stat-icon-wrap purple">
               <IonIcon icon={trendingUpOutline} />
@@ -180,17 +157,6 @@ const DashboardPage: React.FC = () => {
       </IonContent>
 
       <OwnerNavbar />
-
-      <IonAlert
-        isOpen={showLogoutAlert}
-        header="Keluar"
-        message="Yakin ingin keluar dari aplikasi?"
-        buttons={[
-          { text: "Batal", role: "cancel" },
-          { text: "Keluar", role: "destructive", handler: handleLogout },
-        ]}
-        onDidDismiss={() => setShowLogoutAlert(false)}
-      />
     </IonPage>
   );
 };
