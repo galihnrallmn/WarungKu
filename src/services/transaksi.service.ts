@@ -216,7 +216,7 @@ export function getLaporanBulanan(tahun: string): LaporanBulanan[] {
 // EXPORT CSV
 // --------------------------------
 
-export function exportCSV(bulan: string): void {
+export async function exportCSV(bulan: string): Promise<void> {
   const allTrx = getAllWithDetail();
   const filtered = allTrx.filter((t) => t.tanggal.startsWith(bulan));
 
@@ -255,11 +255,30 @@ export function exportCSV(bulan: string): void {
   });
 
   const csv = rows.map((r) => r.join(",")).join("\n");
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `laporan-${bulan}.csv`;
-  a.click();
-  URL.revokeObjectURL(url);
+  const fileName = `laporan-${bulan}.csv`;
+
+  try {
+    const { Capacitor } = await import("@capacitor/core");
+    if (Capacitor.isNativePlatform()) {
+      const { Filesystem, Directory } = await import("@capacitor/filesystem");
+      await Filesystem.writeFile({
+        path: fileName,
+        data: btoa(unescape(encodeURIComponent(csv))),
+        directory: Directory.Documents,
+        recursive: true,
+      });
+    } else {
+      // Fallback browser
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = fileName;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  } catch (err) {
+    console.error("Export CSV error:", err);
+    throw err;
+  }
 }

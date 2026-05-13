@@ -164,23 +164,31 @@ const LaporanPage: React.FC = () => {
     event.detail.complete();
   };
 
-  const handleExport = () => {
+  const handleExport = async () => {
     if (viewMode === "harian") {
       const data = getLaporanHarian(selectedBulan);
       if (data.length === 0) {
         showToast("Tidak ada data untuk diekspor.", "warning");
         return;
       }
-      exportCSV(selectedBulan);
-      showToast("CSV berhasil diunduh.");
+      try {
+        await exportCSV(selectedBulan);
+        showToast("CSV disimpan di folder Documents.");
+      } catch {
+        showToast("Gagal mengekspor CSV.", "danger");
+      }
     } else {
       const data = getLaporanBulanan(selectedTahun);
       if (data.length === 0) {
         showToast("Tidak ada data untuk diekspor.", "warning");
         return;
       }
-      exportCSV(selectedTahun);
-      showToast("CSV berhasil diunduh.");
+      try {
+        await exportCSV(selectedTahun);
+        showToast("CSV disimpan di folder Documents.");
+      } catch {
+        showToast("Gagal mengekspor CSV.", "danger");
+      }
     }
   };
 
